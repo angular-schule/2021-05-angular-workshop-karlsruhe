@@ -1,0 +1,21 @@
+<div class="card mb-4">
+  <div class="card-body bg-light">
+    <img
+      class="img-thumbnail float-right"
+      src="https://api.angular.schule/avatar/{{ book?.rating }}"
+      alt="{{ book?.rating }}"
+    />
+    <div class="card-title">
+      <h2>
+        {{ book?.title }}
+        <span class="badge badge-secondary">{{ book?.rating }}</span>
+      </h2>
+    </div>
+
+    <p>{{ book?.description }}</p>
+
+    <button class="btn btn-primary mr-2">-1</button>
+    <button class="btn btn-primary mr-2">+1</button>
+
+  </div>
+</div>
