@@ -5,7 +5,9 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FeatureBooksModule } from '@book-rating/feature-books';
 
-const appRoutes: Routes = [];
+const appRoutes: Routes = [
+  { path: '', redirectTo: 'books', pathMatch: 'full' }
+];
 
 @NgModule({
   declarations: [AppComponent],

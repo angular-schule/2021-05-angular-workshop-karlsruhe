@@ -5,11 +5,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookComponent } from './book/book.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 
-export const featureBooksRoutes: Route[] = [];
+export const featureBooksRoutes: Route[] = [
+  { path: 'books', component: DashboardComponent },
+  { path: 'books/:isbn', component: BookDetailsComponent },
+];
+
 
 @NgModule({
   declarations: [DashboardComponent, BookComponent, BookDetailsComponent],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule.forChild(featureBooksRoutes)],
   exports: [DashboardComponent]
 })
 export class FeatureBooksModule {}
