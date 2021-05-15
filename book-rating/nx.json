@@ -18,6 +18,6 @@
       "implicitDependencies": ["book-rating"]
     },
     "feature-books": { "tags": ["type:feature", "scope:books"] },
-    "data-books": { "tags": [] }
+    "data-books": { "tags": ["type:data", "scope:books"] }
   }
 }
