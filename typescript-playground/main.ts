@@ -1,1 +1,5 @@
-console.log('Test! 😎')
+import { Test } from "./test";
+
+
+const test = new Test(42);
+test.antwort
