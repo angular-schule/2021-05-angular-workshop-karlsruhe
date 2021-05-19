@@ -14,6 +14,6 @@ export const featureBooksRoutes: Route[] = [
 @NgModule({
   declarations: [DashboardComponent, BookComponent, BookDetailsComponent],
   imports: [CommonModule, RouterModule.forChild(featureBooksRoutes)],
-  exports: [DashboardComponent]
+  exports: [DashboardComponent, BookComponent]
 })
 export class FeatureBooksModule {}
