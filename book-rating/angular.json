@@ -20,9 +20,7 @@
               "apps/book-rating/src/favicon.ico",
               "apps/book-rating/src/assets"
             ],
-            "styles": [
-              "apps/book-rating/src/styles.scss"
-            ],
+            "styles": ["apps/book-rating/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -83,9 +81,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/book-rating"
-          ],
+          "outputs": ["coverage/apps/book-rating"],
           "options": {
             "jestConfig": "apps/book-rating/jest.config.js",
             "passWithNoTests": true
@@ -114,9 +110,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/book-rating-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/book-rating-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -138,9 +132,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/feature-books"
-          ],
+          "outputs": ["coverage/libs/feature-books"],
           "options": {
             "jestConfig": "libs/feature-books/jest.config.js",
             "passWithNoTests": true
@@ -165,12 +157,124 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/data-books"
-          ],
+          "outputs": ["coverage/libs/data-books"],
           "options": {
             "jestConfig": "libs/data-books/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "book-rating-wapper": {
+      "projectType": "application",
+      "root": "apps/book-rating-wapper",
+      "sourceRoot": "apps/book-rating-wapper/src",
+      "prefix": "book-rating",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/book-rating-wapper",
+            "index": "apps/book-rating-wapper/src/index.html",
+            "main": "apps/book-rating-wapper/src/main.ts",
+            "polyfills": "apps/book-rating-wapper/src/polyfills.ts",
+            "tsConfig": "apps/book-rating-wapper/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/book-rating-wapper/src/favicon.ico",
+              "apps/book-rating-wapper/src/assets"
+            ],
+            "styles": ["apps/book-rating-wapper/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/book-rating-wapper/src/environments/environment.ts",
+                  "with": "apps/book-rating-wapper/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "book-rating-wapper:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "book-rating-wapper:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "book-rating-wapper:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/book-rating-wapper/src/**/*.ts",
+              "apps/book-rating-wapper/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/book-rating-wapper"],
+          "options": {
+            "jestConfig": "apps/book-rating-wapper/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "book-rating-wapper-e2e": {
+      "root": "apps/book-rating-wapper-e2e",
+      "sourceRoot": "apps/book-rating-wapper-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/book-rating-wapper-e2e/cypress.json",
+            "tsConfig": "apps/book-rating-wapper-e2e/tsconfig.e2e.json",
+            "devServerTarget": "book-rating-wapper:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "book-rating-wapper:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/book-rating-wapper-e2e/**/*.{js,ts}"]
           }
         }
       }

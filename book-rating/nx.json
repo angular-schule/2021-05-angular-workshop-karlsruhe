@@ -18,6 +18,11 @@
       "implicitDependencies": ["book-rating"]
     },
     "feature-books": { "tags": ["type:feature", "scope:books"] },
-    "data-books": { "tags": ["type:data", "scope:books"] }
+    "data-books": { "tags": ["type:data", "scope:books"] },
+    "book-rating-wapper": { "tags": [] },
+    "book-rating-wapper-e2e": {
+      "tags": [],
+      "implicitDependencies": ["book-rating-wapper"]
+    }
   }
 }
