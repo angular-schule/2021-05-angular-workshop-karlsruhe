@@ -1,12 +1,21 @@
-import { NgModule } from '@angular/core';
+import { DoBootstrap, Injector, NgModule } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
+import { BookComponent, FeatureBooksModule } from '@book-rating/feature-books';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule],
+  declarations: [],
+  imports: [BrowserModule, FeatureBooksModule],
   providers: [],
-  bootstrap: [AppComponent],
+  // bootstrap: [AppComponent],
+  bootstrap: []
 })
-export class AppModule {}
+export class AppModule implements DoBootstrap {
+  constructor(private injector: Injector) { }
+
+  ngDoBootstrap() {
+    const webComponent = createCustomElement(BookComponent, { injector: this.injector });
+    customElements.define('book-component', webComponent);
+  }
+}
+
