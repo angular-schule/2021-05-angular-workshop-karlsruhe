@@ -23,6 +23,6 @@ export class DashboardComponent {
     isbn: '222',
     title: 'jQuery',
     description: 'Haben wir 2000',
-    rating: 1,
+    rating: 0,
   }];
 }
