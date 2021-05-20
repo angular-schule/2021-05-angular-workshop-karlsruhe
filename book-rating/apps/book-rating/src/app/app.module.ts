@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FeatureBooksModule } from '@book-rating/feature-books';
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,6 +14,7 @@ const appRoutes: Routes = [];
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabled' }),
+    FeatureBooksModule
   ],
   providers: [],
   bootstrap: [AppComponent],
