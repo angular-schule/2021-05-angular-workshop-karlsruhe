@@ -1,22 +1,40 @@
 {
   "npmScope": "book-rating",
-  "affected": { "defaultBase": "main" },
+  "affected": {
+    "defaultBase": "main"
+  },
   "implicitDependencies": {
-    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
     ".eslintrc.json": "*"
   },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
     }
   },
   "projects": {
-    "book-rating": { "tags": ["scope:books"] },
+    "book-rating": {
+      "tags": ["scope:books"]
+    },
     "book-rating-e2e": {
       "tags": ["scope:books"],
       "implicitDependencies": ["book-rating"]
     },
-    "feature-books": { "tags": ["type:feature", "scope:books"] }
+    "feature-books": {
+      "tags": ["type:feature", "scope:books"]
+    },
+    "book-rating-wrapper": {
+      "tags": []
+    },
+    "book-rating-wrapper-e2e": {
+      "tags": [],
+      "implicitDependencies": ["book-rating-wrapper"]
+    }
   }
 }

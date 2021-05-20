@@ -139,6 +139,124 @@
           }
         }
       }
+    },
+    "book-rating-wrapper": {
+      "projectType": "application",
+      "root": "apps/book-rating-wrapper",
+      "sourceRoot": "apps/book-rating-wrapper/src",
+      "prefix": "book-rating",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/book-rating-wrapper",
+            "index": "apps/book-rating-wrapper/src/index.html",
+            "main": "apps/book-rating-wrapper/src/main.ts",
+            "polyfills": "apps/book-rating-wrapper/src/polyfills.ts",
+            "tsConfig": "apps/book-rating-wrapper/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/book-rating-wrapper/src/favicon.ico",
+              "apps/book-rating-wrapper/src/assets"
+            ],
+            "styles": ["apps/book-rating-wrapper/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/book-rating-wrapper/src/environments/environment.ts",
+                  "with": "apps/book-rating-wrapper/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "book-rating-wrapper:build:production"
+            },
+            "development": {
+              "browserTarget": "book-rating-wrapper:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "book-rating-wrapper:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/book-rating-wrapper/src/**/*.ts",
+              "apps/book-rating-wrapper/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/book-rating-wrapper"],
+          "options": {
+            "jestConfig": "apps/book-rating-wrapper/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "book-rating-wrapper-e2e": {
+      "root": "apps/book-rating-wrapper-e2e",
+      "sourceRoot": "apps/book-rating-wrapper-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/book-rating-wrapper-e2e/cypress.json",
+            "tsConfig": "apps/book-rating-wrapper-e2e/tsconfig.e2e.json",
+            "devServerTarget": "book-rating-wrapper:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "book-rating-wrapper:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/book-rating-wrapper-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
     }
   },
   "cli": {
