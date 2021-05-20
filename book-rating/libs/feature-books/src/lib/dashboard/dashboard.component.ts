@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Book } from '../shared/book';
 
 @Component({
-  selector: 'br-dashboard',
+  selector: 'books-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
