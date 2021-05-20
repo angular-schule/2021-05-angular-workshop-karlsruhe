@@ -13,6 +13,10 @@
   },
   "projects": {
     "book-rating": { "tags": ["scope:books"] },
-    "book-rating-e2e": { "tags": ["scope:books"], "implicitDependencies": ["book-rating"] }
+    "book-rating-e2e": {
+      "tags": ["scope:books"],
+      "implicitDependencies": ["book-rating"]
+    },
+    "feature-books": { "tags": [] }
   }
 }

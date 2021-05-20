@@ -114,6 +114,31 @@
           }
         }
       }
+    },
+    "feature-books": {
+      "projectType": "library",
+      "root": "libs/feature-books",
+      "sourceRoot": "libs/feature-books/src",
+      "prefix": "books",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/feature-books/src/**/*.ts",
+              "libs/feature-books/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/feature-books"],
+          "options": {
+            "jestConfig": "libs/feature-books/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
