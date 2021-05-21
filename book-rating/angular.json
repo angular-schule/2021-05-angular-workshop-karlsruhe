@@ -253,6 +253,31 @@
           }
         }
       }
+    },
+    "data-books": {
+      "projectType": "library",
+      "root": "libs/data-books",
+      "sourceRoot": "libs/data-books/src",
+      "prefix": "br",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/data-books"],
+          "options": {
+            "jestConfig": "libs/data-books/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/data-books/src/**/*.ts",
+              "libs/data-books/src/**/*.html"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

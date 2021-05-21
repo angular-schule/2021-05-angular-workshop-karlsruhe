@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@book-rating/feature-books": ["libs/feature-books/src/index.ts"]
+      "@book-rating/feature-books": ["libs/feature-books/src/index.ts"],
+      "@book-rating/data-books": ["libs/data-books/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

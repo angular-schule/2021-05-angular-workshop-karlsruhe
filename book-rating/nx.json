@@ -35,6 +35,9 @@
     "book-rating-wrapper-e2e": {
       "tags": [],
       "implicitDependencies": ["book-rating-wrapper"]
+    },
+    "data-books": {
+      "tags": []
     }
   }
 }
