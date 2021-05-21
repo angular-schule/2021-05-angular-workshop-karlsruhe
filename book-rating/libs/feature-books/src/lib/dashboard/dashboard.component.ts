@@ -8,7 +8,7 @@ import { Book, BookRatingService } from '@book-rating/data-books';
 })
 export class DashboardComponent {
 
-  constructor(private bs: BookRatingService) {
+  constructor(private br: BookRatingService) {
 
   }
 
@@ -31,10 +31,18 @@ export class DashboardComponent {
   }];
 
   doRateDown(book: Book): void {
-    console.table(book);
+    const ratedBook = this.br.rateDown(book);
+    this.updateAndSort(ratedBook);
   }
 
   doRateUp(book: Book): void {
-    console.table(book);
+    const ratedBook = this.br.rateUp(book);
+    this.updateAndSort(ratedBook);
+  }
+
+  updateAndSort(ratedBook: Book): void {
+    this.books = this.books
+      .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
+      .sort((a , b) => b.rating - a.rating)
   }
 }
