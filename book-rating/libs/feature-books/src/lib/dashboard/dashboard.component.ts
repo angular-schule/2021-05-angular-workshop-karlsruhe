@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Book } from '@book-rating/data-books';
+import { Book, BookStoreService } from '@book-rating/data-books';
 
 @Component({
   selector: 'books-dashboard',
@@ -7,6 +7,10 @@ import { Book } from '@book-rating/data-books';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+
+  constructor(private bs: BookStoreService) {
+
+  }
 
   books: Book[] = [{
     isbn: '000',
