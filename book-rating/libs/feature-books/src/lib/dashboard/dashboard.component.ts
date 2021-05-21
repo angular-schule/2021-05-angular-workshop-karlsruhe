@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Book, BookStoreService } from '@book-rating/data-books';
+import { Book, BookRatingService } from '@book-rating/data-books';
 
 @Component({
   selector: 'books-dashboard',
@@ -8,7 +8,7 @@ import { Book, BookStoreService } from '@book-rating/data-books';
 })
 export class DashboardComponent {
 
-  constructor(private bs: BookStoreService) {
+  constructor(private bs: BookRatingService) {
 
   }
 
