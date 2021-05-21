@@ -8,7 +8,7 @@
     "nx": "nx",
     "start": "ng serve",
     "build": "ng build",
-    "build:book-rating-wrapper": "nx run book-rating-wrapper:build --prod --output-hashing=none",
+    "build:book-rating-wrapper": "nx run book-rating-wrapper:build --output-hashing=none",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",

@@ -30,7 +30,7 @@
       "tags": ["type:feature", "scope:books"]
     },
     "book-rating-wrapper": {
-      "tags": []
+      "tags": ["scope:books"]
     },
     "book-rating-wrapper-e2e": {
       "tags": [],

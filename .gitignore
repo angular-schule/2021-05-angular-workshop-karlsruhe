@@ -1,3 +1,4 @@
 node_modules
 typescript-playground/*.js
 typescript-playground/*.js.map
+.DS_Store
