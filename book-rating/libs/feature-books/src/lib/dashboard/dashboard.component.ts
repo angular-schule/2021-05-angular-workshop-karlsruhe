@@ -29,4 +29,12 @@ export class DashboardComponent {
     description: 'Haben wir 2000',
     rating: 0,
   }];
+
+  doRateDown(book: Book): void {
+    console.table(book);
+  }
+
+  doRateUp(book: Book): void {
+    console.table(book);
+  }
 }

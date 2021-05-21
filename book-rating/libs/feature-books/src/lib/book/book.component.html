@@ -12,19 +12,7 @@
     </div>
     <p>{{ book?.description }}</p>
 
-    <my-book-component></my-book-component>
-
-    <!--
-      TODO: refactor me! ^_^
-
-      1. Mutation von Objekten
-      2. Logik im Template
-      3. Verletzt das Singel Responsible Principle
-
-    -->
-    <ng-container *ngIf="book">
-      <button (click)="book.rating = book.rating - 1" class="btn btn-primary" >-1</button>
-      <button (click)="book.rating = book.rating + 1"class="btn btn-primary ml-2" >+1</button>
-    </ng-container>
+    <button (click)="doRateDown()" class="btn btn-primary" >-1</button>
+    <button (click)="doRateUp()" class="btn btn-primary ml-2" >+1</button>
   </div>
 </div>
