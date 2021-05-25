@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Book, BookRatingService } from '@book-rating/data-books';
+import { BookComponent } from '../book/book.component';
 
 import { DashboardComponent } from './dashboard.component';
 
@@ -7,8 +9,23 @@ describe('DashboardComponent', () => {
   let fixture: ComponentFixture<DashboardComponent>;
 
   beforeEach(async () => {
+
+    const ratingMock = {
+      isRateUpAllowed: () => true,
+      isRateDownAllowed: () => true,
+      rateUp: jest.fn(b => b)
+    }
+
     await TestBed.configureTestingModule({
-      declarations: [ DashboardComponent ]
+      declarations: [
+        DashboardComponent,
+        BookComponent // Integration test
+      ],
+      providers: [
+        { provide: BookRatingService,
+          useValue: ratingMock
+        }
+      ]
     })
     .compileComponents();
   });
@@ -19,7 +36,13 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should call the service for rateUp()', () => {
+
+    const rs = TestBed.inject(BookRatingService);
+    const book = { isbn: '000' } as Book;
+    component.doRateUp(book);
+
+    expect(rs.rateUp).toHaveBeenLastCalledWith(book);
+    expect(rs.rateUp).toHaveBeenCalledTimes(1);
   });
 });
