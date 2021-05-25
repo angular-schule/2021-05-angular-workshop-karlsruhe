@@ -8,7 +8,7 @@ import { Book, BookRatingService } from '@book-rating/data-books';
 })
 export class DashboardComponent {
 
-  constructor(private br: BookRatingService) {
+  constructor(public br: BookRatingService) {
 
   }
 

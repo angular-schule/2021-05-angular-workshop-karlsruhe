@@ -18,6 +18,12 @@ export class BookComponent  {
   @Output()
   rateUp = new EventEmitter<Book>();
 
+  @Input()
+  isRateUpAllowed = (book: Book) => true;
+
+  @Input()
+  isRateDownAllowed = (book: Book) => true;
+
   doRateDown(): void {
     this.rateDown.emit(this.book);
   }
