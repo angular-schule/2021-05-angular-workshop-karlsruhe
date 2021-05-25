@@ -16,10 +16,16 @@ describe('BookComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BookComponent);
     component = fixture.componentInstance;
+    component.book = {
+      isbn: '000',
+      title: 'Test',
+      description: 'Test',
+      rating: 5
+    };
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should show details of the book', () => {
+    expect(component.book.title).toBe('Test')
   });
 });
