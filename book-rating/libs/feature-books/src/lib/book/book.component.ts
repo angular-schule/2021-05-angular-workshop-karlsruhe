@@ -35,4 +35,8 @@ export class BookComponent  {
   get stars() {
     return new Array(this.book?.rating || 0);
   }
+
+  log() {
+    console.log('CD getriggert', Date.now());
+  }
 }

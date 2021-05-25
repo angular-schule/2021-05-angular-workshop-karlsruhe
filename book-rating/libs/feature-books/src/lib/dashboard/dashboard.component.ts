@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Book, BookRatingService } from '@book-rating/data-books';
 
 @Component({
   selector: 'books-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush // Vorsicht Bug! Wenn wir AJAX einführen!
 })
 export class DashboardComponent {
 
