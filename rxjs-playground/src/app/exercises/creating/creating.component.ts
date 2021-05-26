@@ -23,7 +23,12 @@ export class CreatingComponent implements OnInit {
 
     /******************************/
 
-    
+    // (ABCD|)
+    of('😅', '🤪', '🤩', '😣').subscribe(
+      e => this.log(e),
+      err => this.log('ERROR: ' + err),
+      () => this.log('COMPLETE'));
+
     /******************************/
   }
 
