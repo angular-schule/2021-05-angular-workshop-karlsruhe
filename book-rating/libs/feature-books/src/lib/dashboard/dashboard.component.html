@@ -1,4 +1,6 @@
-<books-create-book></books-create-book>
+<books-create-book
+  (create)="addBook($event)"
+></books-create-book>
 
 <books-book
   *ngFor="let b of books"

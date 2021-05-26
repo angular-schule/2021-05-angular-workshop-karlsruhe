@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Book } from '@book-rating/data-books';
 
 @Component({
   selector: 'books-create-book',
@@ -7,6 +8,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./create-book.component.scss']
 })
 export class CreateBookComponent {
+
+  @Output()
+  create = new EventEmitter<Book>();
 
   bookForm = new FormGroup({
     isbn: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -30,11 +34,7 @@ export class CreateBookComponent {
       rating: 1
     }
 
-    // Gruppenarbeit!
-    // 1. Erzeuge einen EventEmitter mit dem Namen `create` und einem Payload vom Typ Book
-    // 2. Emittiere das Event mit dem neuen Buch
-    // 3. Subscribe dich auf das Ereignis im Dashboard
-    // 4. Füge das Buch dem Array hinzu (Achtung: Immutability beachten)
+    this.create.emit(newBook);
 
     this.bookForm.reset();
   }
