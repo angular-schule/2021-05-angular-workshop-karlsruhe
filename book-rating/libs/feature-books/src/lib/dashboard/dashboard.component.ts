@@ -12,7 +12,7 @@ export class DashboardComponent {
   books: Book[] = [];
 
   constructor(public br: BookRatingService,
-              bs: BookStoreService) {
+              private bs: BookStoreService) {
 
     bs.getBooks().subscribe(books => this.books = books);
   }
@@ -39,6 +39,7 @@ export class DashboardComponent {
   }
 
   addBook(newBook: Book): void {
-    this.books = [...this.books, newBook];
+    this.bs.createBook(newBook)
+      .subscribe(() => this.books = [...this.books, newBook]);
   }
 }

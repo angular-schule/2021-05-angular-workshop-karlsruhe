@@ -21,4 +21,8 @@ export class BookStoreService {
   getSingleBook(isbn: string): Observable<Book> {
     return this.http.get<Book>(this.api + '/books/' + isbn);
   }
+
+  createBook(book: Book): Observable<Book> {
+    return this.http.post<Book>(this.api + '/books/', book);
+  }
 }
