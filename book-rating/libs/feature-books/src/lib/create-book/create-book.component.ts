@@ -19,7 +19,7 @@ export class CreateBookComponent {
   });
 
   isInValid(name: string): boolean {
-    const control = this.bookForm.get(name);
+    const control = this.bookForm.get(name); 
     return !!control && control.touched && control.invalid;
   }
 
