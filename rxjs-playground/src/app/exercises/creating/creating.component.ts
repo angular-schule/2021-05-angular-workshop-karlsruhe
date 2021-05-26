@@ -29,9 +29,19 @@ export class CreatingComponent implements OnInit {
       complete: () => this.log('COMPLETE')
     };
 
+    const observable$ = new Observable(obs => {
+
+      obs.next('😅');
+
+      window.setTimeout(() => obs.next('🤪'), 1000);
+      window.setTimeout(() => obs.error('BOOM!'), 2000);
+
+    });
 
     // (ABCD|)
-    of('😅', '🤪', '🤩', '😣').subscribe(observer);
+    // of('😅', '🤪', '🤩', '😣')
+
+    observable$.subscribe(observer);
 
     /******************************/
   }
