@@ -28,7 +28,9 @@ export class ErrorHandlingComponent {
 
       /******************************/
 
-      
+      retry(1)
+
+
       /******************************/
 
     ).subscribe({
