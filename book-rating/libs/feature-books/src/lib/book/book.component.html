@@ -15,6 +15,9 @@
     <ng-container *ngIf="book">
       <button [disabled]="!isRateDownAllowed(book)" (click)="doRateDown()" class="btn btn-primary" >-1</button>
       <button [disabled]="!isRateUpAllowed(book)" (click)="doRateUp()" class="btn btn-primary ml-2" >+1</button>
+
+      <a [routerLink]="['/books', book.isbn]" class="btn btn-secondary ml-2">Details</a>
+      <!-- <a [routerLink]="[book.isbn]">Details</a> -->
     </ng-container>
   </div>
 </div>

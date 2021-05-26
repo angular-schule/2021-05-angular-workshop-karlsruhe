@@ -10,7 +10,9 @@ import { environment } from '../environments/environment';
 // import { DashboardComponent } from './dashboard/dashboard.component';
 // import { BookComponent } from './book/book.component';
 
-const appRoutes: Routes = [];
+const appRoutes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'books' }
+];
 
 @NgModule({
   declarations: [AppComponent,
