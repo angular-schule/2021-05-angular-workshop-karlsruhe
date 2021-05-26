@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FeatureBooksModule } from '@book-rating/feature-books';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -11,7 +10,10 @@ import { environment } from '../environments/environment';
 // import { BookComponent } from './book/book.component';
 
 const appRoutes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'books' }
+  // { path: '', pathMatch: 'full', redirectTo: 'books' },
+  { path: 'books',
+    loadChildren: () => import('@book-rating/feature-books')
+      .then(m => m.FeatureBooksModule) }
 ];
 
 @NgModule({
@@ -22,7 +24,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabled' }),
-    FeatureBooksModule,
+    // FeatureBooksModule,
     HttpClientModule
   ],
   providers: [{

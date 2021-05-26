@@ -9,8 +9,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BookDetailsComponent } from './book-details/book-details.component';
 
 const featureBooksRoutes: Route[] = [
-  { path: 'books', component: DashboardComponent },
-  { path: 'books/:isbn', component: BookDetailsComponent }
+  { path: '', component: DashboardComponent, pathMatch: 'full' },
+  { path: ':isbn', component: BookDetailsComponent }
 ];
 
 @NgModule({
