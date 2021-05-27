@@ -1,18 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Book, BookRatingService, BookStoreService } from '@book-rating/data-books';
+import { Book, selectBookByIsbn, selectBooks, selectBooksLoading } from '@book-rating/data-books';
+import { select, Store } from '@ngrx/store';
+
 
 @Component({
   selector: 'books-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush // Vorsicht Bug! Wenn wir AJAX einführen!
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent {
 
-  books: Book[] = [];
+  books$ = this.store.pipe(select(selectBooks));
+  loading$ = this.store.pipe(select(selectBooksLoading));
 
-  constructor(public br: BookRatingService,
-              private bs: BookStoreService) {
+  // beispiel
+  book42$ = this.store.pipe(select(selectBookByIsbn, { isbn: '42' }));
+
+  constructor(private store: Store) {
 
 
   }
@@ -33,13 +38,13 @@ export class DashboardComponent {
   }
 
   updateAndSort(ratedBook: Book): void {
-    this.books = this.books
-      .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
-      .sort((a , b) => b.rating - a.rating)
+    // this.books = this.books
+    //   .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
+    //   .sort((a , b) => b.rating - a.rating)
   }
 
   addBook(newBook: Book): void {
-    this.bs.createBook(newBook)
+    // this.bs.createBook(newBook)
       // .subscribe(() => this.books = [...this.books, newBook]);
   }
 }
