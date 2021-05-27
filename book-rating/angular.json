@@ -20,7 +20,9 @@
               "apps/book-rating/src/favicon.ico",
               "apps/book-rating/src/assets"
             ],
-            "styles": ["apps/book-rating/src/styles.scss"],
+            "styles": [
+              "apps/book-rating/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -81,7 +83,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/book-rating"],
+          "outputs": [
+            "coverage/apps/book-rating"
+          ],
           "options": {
             "jestConfig": "apps/book-rating/jest.config.js",
             "passWithNoTests": true
@@ -110,7 +114,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/book-rating-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/book-rating-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -132,7 +138,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/feature-books"],
+          "outputs": [
+            "coverage/libs/feature-books"
+          ],
           "options": {
             "jestConfig": "libs/feature-books/jest.config.js",
             "passWithNoTests": true
@@ -159,7 +167,9 @@
               "apps/book-rating-wrapper/src/favicon.ico",
               "apps/book-rating-wrapper/src/assets"
             ],
-            "styles": ["apps/book-rating-wrapper/src/styles.scss"],
+            "styles": [
+              "apps/book-rating-wrapper/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -220,7 +230,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/book-rating-wrapper"],
+          "outputs": [
+            "coverage/apps/book-rating-wrapper"
+          ],
           "options": {
             "jestConfig": "apps/book-rating-wrapper/jest.config.js",
             "passWithNoTests": true
@@ -249,7 +261,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/book-rating-wrapper-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/book-rating-wrapper-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -262,7 +276,9 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/data-books"],
+          "outputs": [
+            "coverage/libs/data-books"
+          ],
           "options": {
             "jestConfig": "libs/data-books/jest.config.js",
             "passWithNoTests": true
@@ -281,7 +297,7 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@ngrx/schematics"
   },
   "schematics": {
     "@nrwl/angular:application": {
