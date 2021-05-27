@@ -22,7 +22,14 @@ export class FromeventComponent implements OnInit {
 
     /******************************/
 
-    
+    fromEvent(window, 'resize').pipe(
+      map(event => (event.target as Window).innerWidth),
+      // map(() => window.innerWidth),
+      debounceTime(500),
+      startWith(window.innerWidth),
+    ).subscribe(width => this.currentWidth = width)
+
+
     /******************************/
   }
 
