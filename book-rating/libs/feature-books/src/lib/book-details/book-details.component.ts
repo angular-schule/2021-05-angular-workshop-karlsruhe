@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookStoreService } from '@book-rating/data-books';
 import { of } from 'rxjs';
-import { catchError, concatMap, map, mergeMap, share, shareReplay, switchMap } from 'rxjs/operators';
+import { catchError, map, retry, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'books-book-details',
@@ -13,21 +13,24 @@ import { catchError, concatMap, map, mergeMap, share, shareReplay, switchMap } f
 export class BookDetailsComponent  {
 
   showDetails = false;
+  isLoading = false;
 
   book$ = this.route.paramMap.pipe(
     map(paramMap => paramMap.get('isbn') || ''),
-    switchMap(isbn => this.bs.getSingleBook(isbn)),
-    catchError((err: HttpErrorResponse) => of({
-      title: 'Error',
-      rating: 0,
-      description: err.message
-    }))
+    tap(() => this.isLoading = true),
+    switchMap(isbn => this.bs.getSingleBook(isbn).pipe(
+      retry(3),
+      catchError((err: HttpErrorResponse) => of({
+        title: 'Error',
+        rating: 0,
+        description: err.message
+      }))
+    )),
+    tap(() => this.isLoading = false)
   )
 
   constructor(
     private route: ActivatedRoute,
     private bs: BookStoreService) {
-
   }
-
 }
