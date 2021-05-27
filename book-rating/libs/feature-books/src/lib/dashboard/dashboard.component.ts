@@ -14,22 +14,22 @@ export class DashboardComponent {
   constructor(public br: BookRatingService,
               private bs: BookStoreService) {
 
-    bs.getBooks().subscribe(books => this.books = books);
+
   }
 
 
   doRateDown(book: Book): void {
-    const ratedBook = this.br.rateDown(book);
-    this.updateAndSort(ratedBook);
+    // const ratedBook = this.br.rateDown(book);
+    // this.updateAndSort(ratedBook);
   }
 
   doRateUp(book: Book): void {
-    const ratedBook = this.br.rateUp(book);
-    // const ratedBook = {
-    //   ...book,
-    //   rating: Math.min(book.rating + 1, 5)
-    // };
-    this.updateAndSort(ratedBook);
+    // const ratedBook = this.br.rateUp(book);
+    // // const ratedBook = {
+    // //   ...book,
+    // //   rating: Math.min(book.rating + 1, 5)
+    // // };
+    // this.updateAndSort(ratedBook);
   }
 
   updateAndSort(ratedBook: Book): void {
@@ -40,6 +40,6 @@ export class DashboardComponent {
 
   addBook(newBook: Book): void {
     this.bs.createBook(newBook)
-      .subscribe(() => this.books = [...this.books, newBook]);
+      // .subscribe(() => this.books = [...this.books, newBook]);
   }
 }
