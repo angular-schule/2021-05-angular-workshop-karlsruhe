@@ -1,5 +1,5 @@
 import { Book } from '@book-rating/data-books';
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as BookActions from './book.actions';
 
 export const bookFeatureKey = 'book';
@@ -33,6 +33,27 @@ export const reducer = createReducer(
     ...state,
     loading: false,
     books: []
+  })),
+  on(BookActions.rateBookSuccess, (state, { book, rating }) => {
+    const index = state.books.findIndex(b => b.isbn === book.isbn);
+    return {
+      ...state,
+      books: [
+        ...state.books.slice(0, index),
+        {
+          ...book,
+          rating
+        },
+        ...state.books.slice(index + 1)
+      ]
+    }
+  }),
+  on(BookActions.createBookSuccess, (state, { book }) => ({
+    ...state,
+    books: [
+      ...state.books,
+      book
+    ]
   }))
 );
 

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Book } from '..';
+import { rateBook } from './store/book.actions';
 
 const minRating = 1;
 const maxRating = 5;
@@ -10,16 +12,22 @@ const maxRating = 5;
 })
 export class BookRatingService {
 
-  rateDown(book: Book): Book {
-    return {
-      ...book,
-      rating: (book.rating > minRating) ? book.rating - 1 :  minRating
-    };
+  constructor(private store: Store) { }
+
+  rateDown(book: Book): void {
+    const rating = Math.max(book.rating - 1, minRating);
+    this.rateBook(book, rating);
   }
 
-  rateUp(book: Book): Book {
+  rateUp(book: Book): void {
     const rating = Math.min(book.rating + 1, maxRating);
-    return { ...book, rating };
+    this.rateBook(book, rating);
+  }
+
+  rateBook(book: Book, rating: number): void {
+    if (rating !== book.rating) {
+      this.store.dispatch(rateBook({ book, rating }));
+    }
   }
 
   isRateUpAllowed(book: Book) {

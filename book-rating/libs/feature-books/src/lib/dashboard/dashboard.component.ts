@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Book, selectBookByIsbn, selectBooks, selectBooksLoading } from '@book-rating/data-books';
+import { Book, selectBookByIsbn, selectBooks, selectBooksLoading, createBook, BookRatingService } from '@book-rating/data-books';
 import { select, Store } from '@ngrx/store';
-
 
 @Component({
   selector: 'books-dashboard',
@@ -17,34 +16,18 @@ export class DashboardComponent {
   // beispiel
   book42$ = this.store.pipe(select(selectBookByIsbn, { isbn: '42' }));
 
-  constructor(private store: Store) {
-
-
-  }
+  constructor(private store: Store, private bs: BookRatingService) { }
 
 
   doRateDown(book: Book): void {
-    // const ratedBook = this.br.rateDown(book);
-    // this.updateAndSort(ratedBook);
+    this.bs.rateDown(book);
   }
 
   doRateUp(book: Book): void {
-    // const ratedBook = this.br.rateUp(book);
-    // // const ratedBook = {
-    // //   ...book,
-    // //   rating: Math.min(book.rating + 1, 5)
-    // // };
-    // this.updateAndSort(ratedBook);
+    this.bs.rateUp(book);
   }
 
-  updateAndSort(ratedBook: Book): void {
-    // this.books = this.books
-    //   .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
-    //   .sort((a , b) => b.rating - a.rating)
-  }
-
-  addBook(newBook: Book): void {
-    // this.bs.createBook(newBook)
-      // .subscribe(() => this.books = [...this.books, newBook]);
+  addBook(book: Book): void {
+    this.store.dispatch(createBook({ book }))
   }
 }

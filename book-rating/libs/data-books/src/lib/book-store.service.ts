@@ -25,4 +25,8 @@ export class BookStoreService {
   createBook(book: Book): Observable<Book> {
     return this.http.post<Book>(this.api + '/books/', book);
   }
+
+  rateBook(book: Book, rating: number): Observable<{ rate: boolean }> {
+    return this.http.post<{ rate: boolean }>(`${this.api}/books/${book.isbn}/rate`, { rating });
+  }
 }
