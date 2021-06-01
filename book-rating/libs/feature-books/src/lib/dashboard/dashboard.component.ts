@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Book, selectBookByIsbn, selectBooks, selectBooksLoading } from '@book-rating/data-books';
+import { Book, createBook, rateBook, selectBookByIsbn, selectBooks, selectBooksLoading } from '@book-rating/data-books';
 import { select, Store } from '@ngrx/store';
 
 
@@ -24,27 +24,18 @@ export class DashboardComponent {
 
 
   doRateDown(book: Book): void {
-    // const ratedBook = this.br.rateDown(book);
-    // this.updateAndSort(ratedBook);
+    this.store.dispatch(rateBook({ book, rating: book.rating - 1 }));
   }
 
   doRateUp(book: Book): void {
-    // const ratedBook = this.br.rateUp(book);
-    // // const ratedBook = {
-    // //   ...book,
-    // //   rating: Math.min(book.rating + 1, 5)
-    // // };
-    // this.updateAndSort(ratedBook);
+    this.store.dispatch(rateBook({ book, rating: book.rating + 1 }));
   }
 
   updateAndSort(ratedBook: Book): void {
-    // this.books = this.books
-    //   .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
-    //   .sort((a , b) => b.rating - a.rating)
+    // rating triggers reload
   }
 
-  addBook(newBook: Book): void {
-    // this.bs.createBook(newBook)
-      // .subscribe(() => this.books = [...this.books, newBook]);
+  addBook(book: Book): void {
+    this.store.dispatch(createBook({ book }));
   }
 }

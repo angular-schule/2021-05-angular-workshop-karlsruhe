@@ -1,5 +1,8 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Book } from '..';
+import { API_URL } from './book-store.service';
 
 const minRating = 1;
 const maxRating = 5;
@@ -10,16 +13,11 @@ const maxRating = 5;
 })
 export class BookRatingService {
 
-  rateDown(book: Book): Book {
-    return {
-      ...book,
-      rating: (book.rating > minRating) ? book.rating - 1 :  minRating
-    };
-  }
+  constructor(public http: HttpClient,
+    @Inject(API_URL) private api: string) {}
 
-  rateUp(book: Book): Book {
-    const rating = Math.min(book.rating + 1, maxRating);
-    return { ...book, rating };
+  rateBook(isbn: string, rating: number): Observable<Book> {
+    return this.http.post<Book>(this.api + '/books/' + isbn + '/rate', { rating });
   }
 
   isRateUpAllowed(book: Book) {
