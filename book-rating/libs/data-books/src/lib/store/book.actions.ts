@@ -15,3 +15,31 @@ export const loadBooksFailure = createAction(
   '[Book] Load Books Failure',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const createBook = createAction(
+  '[Book] Create Book',
+  props<{ book: Book }>()
+);
+
+export const createBookSuccess = createAction(
+  '[Book] Create Book Success'
+);
+
+export const createBookFailure = createAction(
+  '[Book] Create Book Failure',
+  props<{ error: HttpErrorResponse }>()
+);
+
+export const rateBook = createAction(
+  '[Book] Rate Book',
+  props<{ book: Book, rating: number }>()
+);
+
+export const rateBookSuccess = createAction(
+  '[Book] Rate Book Success'
+);
+
+export const rateBookFailure = createAction(
+  '[Book] Rate Book Failure',
+  props<{ error: HttpErrorResponse }>()
+);
