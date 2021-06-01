@@ -3,3 +3,4 @@ export * from './lib/book';
 export * from './lib/book-rating.service';
 export * from './lib/book-store.service';
 export * from './lib/store/book.selectors';
+export * from './lib/store/book.actions';
